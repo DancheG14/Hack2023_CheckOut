@@ -10,6 +10,13 @@ with open('merged_data.json', "r") as readFile:
 departments = []
 for n in range(10000):
     departments.append(merge_data[n]['Tasks']['Task1']['task_responsibles_groups'])
+    
+# Определяем ФИО сотрудников
+persons = []
+for n in range(10000):
+    departments.append(merge_data[n]['Tasks']['Task1']['task_responsibles_people'])
+
+
 
 
 departments_set = set(departments)
