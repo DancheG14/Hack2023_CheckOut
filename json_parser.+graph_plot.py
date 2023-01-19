@@ -21,7 +21,7 @@ for n in range(9999):
     except ValueError:
         continue
 
-data
+#data
 
 with open('merged_data.json', "w") as outfile:
     json.dump(data, outfile)
@@ -67,8 +67,10 @@ DG = nx.DiGraph()
 for g in range(int(len(departments_Unique_list))):
     try:
       for i in range(int(len(persons_Unique_list))):
-        DG.add_edge('ООО "Мегасофт"', departments_Unique_list[g]) 
-        DG.add_edge(persons_Unique_list[i], tasks_Unique_list[i])
+        for t in range(int(len(persons_Unique_list))):
+            DG.add_edge('ООО "Мегасофт"', departments_Unique_list[g]) 
+            DG.add_edge(departments_Unique_list[g], persons_Unique_list[i])
+            DG.add_edge(persons_Unique_list[g], tasks_Unique_list[t])
     except IndexError:
       continue
 
