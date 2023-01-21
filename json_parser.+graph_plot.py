@@ -16,7 +16,6 @@ import matplotlib.pyplot as plt
 !unzip -q json.zip
 
 directory = '/content/json/'
-directory = '/content/json/'
 data = []
 
 for n in range(10000):
@@ -40,7 +39,7 @@ with open('merged_data.json', "r") as readFile:
 departments = []
 persons = []
 tasks = []
-for n in range(9999):
+for n in range(10000):
     try:
         for i in range (1,10):
             try:
