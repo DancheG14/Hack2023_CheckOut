@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+!pip install pyg-nightly
+!pip install 'scipy>=1.8'
+
+
 import os
 import re
 import json
@@ -14,7 +18,8 @@ import matplotlib.pyplot as plt
 directory = '/content/json/'
 directory = '/content/json/'
 data = []
-for n in range(9999):
+
+for n in range(10000):
     name = str(n) + '.json'
     try:
         with open(directory + name, "r") as readFile:
@@ -24,7 +29,7 @@ for n in range(9999):
     except ValueError:
         continue
 
-#data
+data
 
 with open('merged_data.json', "w") as outfile:
     json.dump(data, outfile)
@@ -69,15 +74,12 @@ DG = nx.DiGraph()
 
 for g in range(int(len(departments_Unique_list))):
     try:
+      DG.add_edge('ООО "Мегасофт"', departments_Unique_list[g]) 
       for i in range(int(len(persons_Unique_list))):
-        for t in range(int(len(persons_Unique_list))):
-            DG.add_edge('ООО "Мегасофт"', departments_Unique_list[g]) 
-            DG.add_edge(departments_Unique_list[g], persons_Unique_list[i])
-            DG.add_edge(persons_Unique_list[g], tasks_Unique_list[t])
+          DG.add_edge(departments_Unique_list[g], persons_Unique_list[i])  
+          for t in range(425): #int(len(persons_Unique_list))):
+                DG.add_edge(persons_Unique_list[g], tasks_Unique_list[t])
     except IndexError:
-        continue
-    except ValueError
-        continue
-        
+      continue
 
-nx.draw(DG, with_labels=True, font_weight='bold')
+nx.draw(DG, with_labels=False, font_weight='bold')
