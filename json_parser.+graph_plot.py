@@ -4,6 +4,7 @@ import os
 import re
 import json
 import networkx as nx
+from networkx.readwrite import json_graph
 import matplotlib.pyplot as plt
 
 !wget "https://www.dropbox.com/s/1uq4qo7jfjp94z5/json.zip"
@@ -11,13 +12,15 @@ import matplotlib.pyplot as plt
 !unzip -q json.zip
 
 directory = '/content/json/'
+directory = '/content/json/'
 data = []
 for n in range(9999):
     name = str(n) + '.json'
     try:
         with open(directory + name, "r") as readFile:
             jsonData = json.load(readFile)
-        data.append(jsonData)
+            jsonData["id"] = n
+            data.append(jsonData)
     except ValueError:
         continue
 
@@ -32,7 +35,7 @@ with open('merged_data.json', "r") as readFile:
 departments = []
 persons = []
 tasks = []
-for n in range(604552):
+for n in range(9999):
     try:
         for i in range (1,10):
             try:
@@ -72,6 +75,9 @@ for g in range(int(len(departments_Unique_list))):
             DG.add_edge(departments_Unique_list[g], persons_Unique_list[i])
             DG.add_edge(persons_Unique_list[g], tasks_Unique_list[t])
     except IndexError:
-      continue
+        continue
+    except ValueError
+        continue
+        
 
 nx.draw(DG, with_labels=True, font_weight='bold')
