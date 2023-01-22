@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 directory = '/content/json/'
 data = []
 
-for n in range(10000):
+for n in range(9999):
     name = str(n) + '.json'
     try:
         with open(directory + name, "r") as readFile:
@@ -50,6 +50,18 @@ for n in range(10000):
                 continue
     except IndexError:
         continue
+
+#Формируем dataframe
+        
+df = pd.json_normalize(merge_data)
+
+     
+
+df.set_index('id', inplace=True)
+df.sort_index(inplace=True) # сортировка по индексу=id 
+     
+
+df.columns = df.columns.str.replace("Tasks.", "")
 
 departments
 
