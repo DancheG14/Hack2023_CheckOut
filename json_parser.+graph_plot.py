@@ -51,7 +51,7 @@ for n in range(10000):
     except IndexError:
         continue
 
-#Формируем dataframe
+""" ###Формируем dataframe  """
         
 df = pd.json_normalize(merge_data)
 
